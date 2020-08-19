@@ -1,0 +1,57 @@
+// media queries setting
+@mixin desk_size {
+    @media (min-width: 920px){
+        @content;
+    }
+}
+
+// global element settings
+@mixin global_settings {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+@mixin global_sections_settings {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+@mixin global_mobile_buttons_settings {
+    display: flex;
+    color: $color-nav-l-normal;
+    background-color: $color-buttons;
+    font-family: 'IBM Plex Mono';
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    letter-spacing: 0;
+    width: 288px;
+    height: 48px;
+    margin-top: 36px;
+    font-size: 16px;
+    line-height: 48px;
+    align-self: center;
+    &:hover{
+        background-image: linear-gradient(225deg, #0000FE, #00F0B8);
+        a{
+            color: $color-buttons-hover;
+        }
+    }
+    a{
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@mixin global_sec_title_settings{
+    font-family: 'IBM Plex Sans';
+    font-size: 36px;
+    letter-spacing: 0;
+    line-height: 42px;
+    font-weight: 400;
+}
+

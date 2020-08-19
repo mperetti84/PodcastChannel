@@ -1,0 +1,489 @@
+* {
+   @include global_settings;
+}
+
+
+.global{                                                                                // main container
+    @include global_sections_settings;
+    align-content: center;
+    a{
+        text-decoration: none;
+        color: $color-nav-l-normal;
+    }
+ 
+    .header{                                                                            // header section    
+        @include global_sections_settings;
+        margin: 0;
+        width: 100%;
+        position: relative;
+        .menu{                                                                          // menu sub-section
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            height: $altura-menu-s;
+            justify-content: space-between;
+            margin: $margin-header-s;
+            @include desk_size{
+                height: $altura-menu-l;
+                margin: $margin-header-l;
+            }
+            .logo{
+                display: flex;
+                width: $ancho-logo-s;
+                height: $altura-logo-s;
+                @include desk_size{
+                    width: 36px;
+                    height: 36px;
+                }
+                .img_logo{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .button_label {                                                             // mobile menu button
+                cursor: pointer;
+                font-size: 14px;
+                line-height: 18px;
+                .fa-bars {
+                    display: flex;
+                }
+                .fa-times {
+                    display: none;
+                }
+                @include desk_size{
+                    display: none;
+                }
+            }
+
+            .mobile_button {
+                display: none;
+                &:checked ~ .button_label .fa-times {
+                    display: flex;
+                }
+                &:checked ~ .button_label .fa-bars {
+                    display: none;
+                }
+                &:checked ~ .nav {
+                    margin-top: 0;
+                }
+            }
+                         
+            .nav {                                                                          // nav bar
+                display: flex;
+                flex-flow: column nowrap;
+                margin: -110% 0 0 0;
+                transition: margin-top;
+                transition-duration: 0.3s;
+                transition-timing-function: ease;
+                z-index: 1;
+                width: 100%;
+                top: $altura-menu-s;
+                left: 0;
+                position: absolute;
+                background-color: #0000EC;
+                a{
+                    font-family: 'IBM Plex Mono';
+                    font-size: 16px;
+                    color: #ffffff;
+                    letter-spacing: 0;
+                    line-height: 28px;
+                    margin: 16px 12px;
+                    text-align: start;
+                    padding-left: 0;
+                    &:hover{
+                        color: $color-nav-l-hover;
+                        text-decoration: line-through;
+                    }
+                    &:active{
+                        color: $color-nav-l-active;
+                        text-decoration: line-through;
+                    }
+                }
+                @include desk_size{
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    transition: none;
+                    margin: 0;
+                    top: 0;
+                    z-index: 0;
+                    position: initial;
+                    width: initial;
+                    background-color: initial;
+                    a{
+                        font-family: 'IBM Plex Mono';
+                        font-size: 16px;
+                        color: $color-nav-l-normal;
+                        letter-spacing: 0;
+                        line-height: 28px;
+                        display: inline-block;
+                        padding: 1.6vw;
+                        &:hover{
+                            color: $color-nav-l-hover;
+                            text-decoration: line-through;
+                        }
+                        &:active{
+                            color: $color-nav-l-active;
+                            text-decoration: line-through;
+                        }
+                    }
+                    .episodes_link{
+                        padding-left: 0;
+                    }
+                    .topics_link{
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+        .title{                                                                         // title sub-section
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: flex-start;
+            margin: $margin-title-s;
+            @include desk_size{
+                margin: $margin-title-l;
+            }
+            .main_title{                                                                // main title
+                display: flex;
+                flex-flow: row wrap;
+                text-align: left;
+                font-family: 'IBM Plex Sans';
+                font-weight: 400;
+                font-size: 36px;
+                letter-spacing: 0;
+                line-height: 42px;
+                color: $color-nav-l-normal;
+                @include desk_size{
+                    font-size: 64px;
+                    line-height: 84px;
+                    color: $color-nav-l-normal;
+                    display: flex;
+                }
+                .world{
+                    text-decoration: line-through;
+                    padding-left: $padding-title-s;
+                    padding-right: $padding-title-s;
+                    height: 42px;
+                    @include desk_size{
+                        padding-left: $padding-title-l;
+                        padding-right: $padding-title-l;
+                        height: 84px;
+                    }
+                }
+                .pale_dot{
+                    height: 42px;
+                    @include desk_size{
+                        height: 84px;
+                        .dot{
+                            color: $color-dot;
+                        }
+                    }
+                }
+                
+            }
+            .paragraph{                                                                 // title paragraph
+                font-family: 'IBM Plex Mono';
+                color: $color-nav-l-normal;
+                text-align: justify;
+                width: 100%;
+                font-size: 14px;
+                line-height: 22px;
+                letter-spacing: 0;
+                margin-top: 16px;
+                .p_desk, .intro_desk{
+                    display: none;
+                }
+                .intro_mobile{
+                    padding-right: 8px;
+                }
+                @include desk_size{
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: $color-nav-l-normal;
+                    width: 628px;
+                    text-align: left;
+                    .p_desk{
+                        height: 24px;
+                        display: initial;
+                        padding-left: 8px;
+                    }
+                    .intro_desk{
+                        display: initial;
+                        padding-right: 3px;
+                    }
+                    .intro_mobile{
+                        display: none;
+                    }
+                }
+            }
+            .button{                                                                    // menu button
+                margin: 0;
+                @include global_mobile_buttons_settings;
+                @include desk_size{
+                    width: 226px;
+                    height: 56px;
+                    margin-top: 56px;
+                    font-size: 18px;
+                    line-height: 56px;
+                    align-self: flex-start;
+                }
+            }
+        }
+    }
+    .episodes_sec{                                                                      // episodes section
+        @include global_sections_settings;
+        margin-top: 24px;
+        background-image: linear-gradient(225deg, #0000FF, #0000A3);
+        clip-path: polygon(0 3%, 100% 0, 100% 97%, 0% 100%);
+        justify-content: flex-start;
+        @include desk_size{
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
+            margin-top: 5px;
+        }
+        .secondary_title{
+            @include global_sec_title_settings;
+            margin: $margin-title-episodios-s;
+            color: $color-buttons-hover;
+            @include desk_size{
+                margin: $margin-title-episodios-l;
+                font-size: 48px;
+                line-height: 62px;
+            }
+        }
+        .spotplay{
+            display: grid;
+            grid-template-columns: auto;
+            margin: $margin-spotplay-s;
+            gap: 11px;
+            .player{
+                width: 100%;
+                height: 232px;
+            }
+            @include desk_size{
+                margin: $margin-spotplay-l;
+                grid-template-columns: auto auto;
+                gap: 72px;
+            }
+        }
+    }           
+    .self_info_sec{                                                                     // self info section
+        @include global_sections_settings;
+        margin: $margin-venimos-s;
+        justify-content: flex-start;
+        align-items: center;
+        @include desk_size{
+            flex-flow: row nowrap;
+            margin: $margin-venimos-l;
+            justify-content: space-between;
+        }
+        .self_info_pic{
+            display: inline-block;
+            width: 360px;
+            z-index: 1;
+            .women_coding{
+                width: 100%;
+            }
+            @include desk_size{
+                width: 458px;
+            }
+        }
+        .self_info_text{
+            display: flex;
+            flex-flow: column nowrap;
+            margin-top: 27px;
+            @include desk_size{
+                margin-top: 0;
+                width: 32vw;
+            }
+            .secondary_title{
+                @include global_sec_title_settings;
+                color:$color-nav-l-normal;
+                text-align: left;
+                @include desk_size{
+                    font-size: 48px;
+                    line-height: 62px;
+                }
+            }
+            .p1{
+                margin-top: 8px;
+                margin-bottom: 10px;
+            }
+            .paragraph{
+                text-align: left;
+                font-family: 'IBM Plex Sans';
+                width: 100%;
+                font-size: 14px;
+                line-height: 22px;
+                letter-spacing: 0;
+                @include desk_size{
+                    text-align: justify;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+    .guests_sec{                                                                        // guests section  
+        @include global_sections_settings;
+        margin-top: 54px;
+        justify-content: flex-start;
+        @include desk_size{
+            margin-top: 64px;
+        }
+        .secondary_title{
+            @include global_sec_title_settings;
+            margin: 0 16px;
+            color:$color-nav-l-normal;
+            @include desk_size{
+                margin: 0 14vw;
+                font-size: 48px;
+                line-height: 62px;
+            }
+        }
+        .guests_pic_cont{
+            display: grid;
+            margin-top: 14px;
+            grid-template-columns: auto;
+            .guest_pic{
+                width: 100%;
+            }
+            @include desk_size{
+                margin-top: 36px;
+                grid-template-columns: auto auto auto;
+            }
+        }
+    }
+    .topics_sec{                                                                        // topics section
+        @include global_sections_settings;
+        margin: 48px 19px 0 16px;
+        align-items: center;
+        justify-content: flex-start;
+        @include desk_size{
+            margin: 64px 14vw 0;
+        }
+        .secondary_title{
+            @include global_sec_title_settings;
+            text-align: left;
+            align-self: flex-start;
+            margin: 0 16px;
+            color:$color-nav-l-normal;
+            @include desk_size{
+                margin: 0;
+                font-size: 48px;
+                line-height: 62px;
+            }
+        }
+        .topics_icon_cont{                                                              // topics container
+            display: grid;
+            grid-template-columns: auto;
+            margin-top: 24px;
+            gap: 52px;
+            @include desk_size{
+                width: 100%;
+                grid-template-columns: 25% 25% 25% 25%;
+                gap: 0;
+                margin-top: 56px;
+            }
+            .topic_icon_text_cont{
+                display: flex;
+                flex-flow: column nowrap;
+                align-content: center;
+                justify-content: flex-start;
+                @include desk_size{
+                    margin: 0;
+                }
+                .topic_icon_cont{
+                    display: flex;
+                    flex-flow: column wrap;
+                    align-content: center;
+                    justify-content: flex-start;
+                    width: 100%;
+                    .topic_icon{
+                        margin-top: 13px;
+                        margin-bottom: 13px;
+                    }
+                }
+                .topic_text{
+                    h3{
+                        font-family: 'IBM Plex sans';
+                        font-weight: 600;
+                        font-size: 24px;
+                        letter-spacing: 0;
+                        text-align: center;
+                        line-height: 32px;
+                        color: $color-nav-l-normal;
+                        margin: 0 16px;
+                    }
+                }
+            }
+        }
+    }
+    .news_sec{                                                                          // news section
+        @include global_sections_settings;
+        align-content: center;
+        justify-content: flex-start;
+        background-image: linear-gradient(225deg, #0000FF, #0000A3);
+        clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+        margin-top: 42px;
+        @include desk_size{
+            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+            margin-top: 34px;
+        }
+        .secondary_title{
+            @include global_sec_title_settings;
+            text-align: center;
+            margin: 64px 16px 0;
+            color:  $color-buttons-hover;
+            @include desk_size{
+                margin-top: 213px;
+                font-size: 48px;
+                line-height: 62px;
+            }
+            
+        }
+        .button{                                                                        // bottom button
+            @include global_mobile_buttons_settings;
+            margin-bottom: 67px;
+            @include desk_size{
+                width: 345px;
+                height: 56px;
+                margin-top: 36px;
+                margin-bottom: 151px;
+                font-size: 18px;
+                line-height: 56px;
+            }
+        }
+    }
+    .footer_cont{                                                                       // footer
+        @include global_sections_settings;
+        justify-content: flex-start;
+        align-items: center;
+        font-family: 'IBM Plex Mono';
+        font-size: 14px;
+        color: #060A24;
+        letter-spacing: 0;
+        line-height: 22px;
+        margin-top: 24px;
+        margin-bottom: 31px;
+        .social_media_cont{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            font-size: 16px;
+            letter-spacing: 0;
+            line-height: 28px;
+            width: 72vw;
+            margin-top: 16px;
+        }
+        @include desk_size{
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            margin: 36px 7vw 31px;
+            .social_media_cont{
+                margin: 0;
+                width: 15vw;
+            }
+        }
+    }
+}
